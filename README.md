@@ -201,3 +201,7 @@ python -m scripts.predict_last_24h
 ```
 
 This will produce a fully consistent set of artifacts for the new time window, but it will not match the original EDA/model outputs.
+
+## 🤖 AI Usage Disclosure
+
+In compliance with the assignment guidelines, I utilized AI tools (LLMs) to assist with code refactoring, documentation structure, and debugging, while maintaining full ownership of the architectural design, economic reasoning, and data analysis.
