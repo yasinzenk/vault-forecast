@@ -62,7 +62,7 @@ Weights are derived from a vault allocation snapshot (supplyAssetsUsd / totalAss
 ## 3. 🧠 Model Proposal
 
 - 🎯 **Problem framing** : modeled as a time-series regression predicting the 24h forward return. Evaluation prioritizes MAE over MSE to avoid over-penalizing rare volatility spikes; Huber loss is used to balance precision and robustness.
-- 🧩 **Feature engineering** (context-aware design) — Features are built to capture three temporal horizons:
+- 🧩 **Feature engineering** (context-aware design) : features are built to capture three temporal horizons:
     - Inertia (1h lag): captures short-term persistence in utilization.
     - Momentum (3h–6h lags): detects acceleration or deceleration in borrowing demand.
     - Trend & cycle (rolling 6h / 24h): smooths noise and contextualizes current conditions relative to the daily regime.
