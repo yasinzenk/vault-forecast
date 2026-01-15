@@ -154,5 +154,23 @@ def main() -> None:
     joblib.dump(list(X_train.columns), models_dir / "feature_columns.joblib")
     print("Saved model + feature schema ✅")
 
+     # ---- 6) Export results for notebook analysis
+    results_df = pd.DataFrame(
+        {
+            "timestamp": timestamps.loc[y_test.index].reset_index(drop=True),
+            "y_true_return_24h": y_test.reset_index(drop=True),
+            "pred_ridge": y_pred,
+            "pred_huber": y_pred_huber,
+            "baseline_mean": baseline_mean,
+            "baseline_apy_365": baseline_apy,
+        }
+    )
+
+    results_path = Path("data/processed/model_results.parquet")
+    results_path.parent.mkdir(parents=True, exist_ok=True)
+    results_df.to_parquet(results_path, index=False)
+
+    print(f"Saved model results for notebook → {results_path} ✅")
+
 if __name__ == "__main__":
     main()
